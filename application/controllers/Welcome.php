@@ -19,7 +19,12 @@ class Welcome extends Application
 	 */
 	public function index()
 	{
-		$this->data['pagebody'] = 'welcome_message';
+        $result = '';
+        foreach ($this->categories->all() as $category) {
+            
+        }
+        
+		$this->data['content'] = $result;
 		$this->render(); 
 	}
 
