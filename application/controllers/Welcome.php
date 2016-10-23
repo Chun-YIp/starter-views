@@ -19,7 +19,15 @@ class Welcome extends Application
 	 */
 	public function index()
 	{
-		$this->data['pagebody'] = 'welcome_message';
+        $result = '';
+        $oddrow = true;
+        foreach ($this->categories->all() as $category) {
+            $category->direction = ($oddrow ? 'left' : 'right');
+            $result .= $this->parser->parse('category-home', $category, true);
+            $oddrow = !$oddrow;
+        }
+        
+		$this->data['content'] = $result;
 		$this->render(); 
 	}
 
