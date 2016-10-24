@@ -13,10 +13,10 @@ class Shopping extends Application {
         $this->data['receipt'] = $this->parsedown->parse($stuff);
         
         $count = 1;
-        foreach ($this->categories->all() as $category) {
+        foreach ($this->Categories->all() as $category) {
             $chunk = 'category' . $count; 
             $this->data[$chunk] = $this->parser->parse('category-shop',$category,true);
-            foreach($this->menu->all() as $menuitem) {
+            foreach($this->Menu->all() as $menuitem) {
                 if ($menuitem->category != $category->id) continue;
                 $this->data[$chunk] .= $this->parser->parse('menuitem-shop',$menuitem,true);
             }
