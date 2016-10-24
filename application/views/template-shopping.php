@@ -11,23 +11,24 @@
     <body>
         <div id="container">
             {navbar}
-            <div class = 'col-md-9'>
-                <div class="row">
-                    <div class='col-md-4'>
-                        {category1}
-                    </div>
-                    <div class='col-md-4'>
-                        {category2}
-                    </div>
-                    <div class='col-md-4'>
-                        {category3}
+            <div class='row'>
+                <div class='col-md-9'>
+                    <div class='row'>
+                        <div class='col-md-4'>
+                            {category1}
+                        </div>
+                        <div class='col-md-4'>
+                            {category2}
+                        </div>
+                        <div class='col-md-4'>
+                            {category3}
+                        </div>
                     </div>
                 </div>
+                <div class='col-md-3'>
+                    {receipt}
+                </div>
             </div>
-            <div class = 'col-md-3'>
-                {receipt}
-            </div>    
-            {content}
             <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. 
                 {ci_version}</p>
         </div>
