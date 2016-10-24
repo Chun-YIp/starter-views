@@ -6,3 +6,4 @@ ML: Fixed issues with Job1 that were doable without DB connection
 ML: Finished Job2
 CY: Finished Job3, can't test because Bitnami is failing me.
 ML: Fixed issues with job3 that couldn't be resolved on Chun-Yip's machine
+ML: Added superfluous change to changelog
