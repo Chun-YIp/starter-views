@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 16, 2016 at 11:01 PM
+-- Generation Time: Oct 19, 2016 at 12:10 AM
 -- Server version: 5.7.13
 -- PHP Version: 7.0.8
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `categories`
 --
 
+DROP TABLE IF EXISTS `Categories`;
 CREATE TABLE `Categories` (
   `id` varchar(1) NOT NULL,
   `name` varchar(64) NOT NULL,
@@ -45,9 +46,23 @@ INSERT INTO `Categories` (`id`, `name`, `description`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `ci_sessions`
+--
+
+CREATE TABLE `ci_sessions` (
+  `id` varchar(128) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `data` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `menu`
 --
 
+DROP TABLE IF EXISTS `Menu`;
 CREATE TABLE `Menu` (
   `id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
@@ -77,6 +92,7 @@ INSERT INTO `Menu` (`id`, `name`, `description`, `price`, `picture`, `category`)
 -- Table structure for table `orderitems`
 --
 
+DROP TABLE IF EXISTS `Orderitems`;
 CREATE TABLE `Orderitems` (
   `order` int(11) NOT NULL,
   `item` int(11) NOT NULL,
@@ -90,6 +106,7 @@ CREATE TABLE `Orderitems` (
 -- Table structure for table `orders`
 --
 
+DROP TABLE IF EXISTS `Orders`;
 CREATE TABLE `Orders` (
   `num` int(11) NOT NULL,
   `date` datetime NOT NULL,
@@ -107,6 +124,12 @@ CREATE TABLE `Orders` (
 --
 ALTER TABLE `Categories`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ci_sessions`
+--
+ALTER TABLE `ci_sessions`
+  ADD KEY `ci_sessions_timestamp` (`timestamp`);
 
 --
 -- Indexes for table `menu`

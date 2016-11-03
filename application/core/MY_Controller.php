@@ -9,22 +9,20 @@
  * @copyright           2010-2016, James L. Parry
  * ------------------------------------------------------------------------
  */
-class Application extends CI_Controller
-{
+class Application extends CI_Controller {
 
 	/**
 	 * Constructor.
 	 * Establish view parameters & load common helpers
 	 */
-
 	function __construct()
 	{
 		parent::__construct();
 
 		//  Set basic view parameters
-		$this->data = array ();
-		$this->data['pagetitle'] = 'Markus and Chun-Yip\'s Diner';
-		$this->data['ci_version'] = (ENVIRONMENT === 'development') ? 'CodeIgniter Version <strong>'.CI_VERSION.'</strong>' : '';
+		$this->data = array();
+		$this->data['pagetitle'] = "Markus and Chuns' Dinner Diner";
+		$this->data['ci_version'] = (ENVIRONMENT === 'development') ? 'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '';
 	}
 
 	/**
@@ -32,11 +30,11 @@ class Application extends CI_Controller
 	 */
 	function render($template = 'template')
 	{
-        $this->data['navbar'] = $this->parser->parse('navbar', $this->data, true);
-        if(!isset($this->data['content']))
-        {
-            $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
-		}
-        $this->parser->parse($template, $this->data);
+		$this->data['navbar'] = $this->parser->parse('navbar', $this->data,true);
+		// use layout content if provided
+		if (!isset($this->data['content']))
+			$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
+		$this->parser->parse($template, $this->data);
 	}
+
 }
