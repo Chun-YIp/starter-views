@@ -2,15 +2,18 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Hiring extends Application {
+class Hiring extends Application
+{
 
-    function __construct() {
-            parent::__construct();
-    }
+	function __construct() {
+		parent::__construct();
+	}
+	
+	public function index()
+	{
+        $stuff = file_get_contents('../data/jobs.md');
+        $this->data['content'] = $this->parsedown->parse($stuff);
+        $this->render('template-secondary'); 
+	}
 
-    public function index() {
-            $stuff = file_get_contents('../data/jobs.md');
-            $this->data['content'] = $this->parsedown->parse($stuff);
-            $this->render('template-secondary'); 
-    }
 }
